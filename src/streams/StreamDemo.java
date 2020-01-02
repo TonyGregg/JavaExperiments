@@ -1,5 +1,6 @@
 package streams;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +23,27 @@ public class StreamDemo {
                 .collect(Collectors.toList());
 
         lowCalorieDishes.forEach(System.out::println);
+        // use of takewhile (java 9 feature)
+        // If the menu is already ordered, stop once you found a dish that is greater than or equal to 300 calories
+
+        List<Menu> lowCalorieMenus =  menus
+                .stream()
+                .takeWhile(dish -> dish.getCalories() <= 300)
+                .collect(Collectors.toList());
+
+        System.out.println("Takewhile demo. No filter. ");
+
+        lowCalorieMenus.forEach(System.out::println);
+
+        // opposite is dropWhile
+        List<Menu> highCalorieMenus = menus
+                .stream()
+                .dropWhile(menu -> menu.getCalories() < 300)
+                .collect(Collectors.toList());
+        System.out.println("use of dropWhile. ");
+        highCalorieMenus.forEach(System.out::println);
+
+
     }
 
     private static ArrayList<Menu> getMenus() {

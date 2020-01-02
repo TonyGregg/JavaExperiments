@@ -25,4 +25,13 @@ public class Menu {
         this.calories = calories;
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "name='" + name + '\'' +
+                ", calories=" + calories +
+                ", price=" + price +
+                '}';
+    }
 }
