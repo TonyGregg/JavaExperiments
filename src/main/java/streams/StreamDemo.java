@@ -30,10 +30,10 @@ public class StreamDemo {
                 .stream()
                 .takeWhile(dish -> dish.getCalories() <= 300)
                 .collect(Collectors.toList());
-
+//
         System.out.println("Takewhile demo. No filter. ");
-
-        lowCalorieMenus.forEach(System.out::println);
+//
+//        lowCalorieMenus.forEach(System.out::println);println
 
         // opposite is dropWhile
         List<Menu> highCalorieMenus = menus
