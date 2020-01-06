@@ -11,7 +11,9 @@ public class CustomLambdaDemo {
     public static void main(String[] args) {
         try {
             String oneLine = processFile((BufferedReader::readLine));
-            String twoLines = processFile(BufferedReader::readLine) + processFile(BufferedReader::readLine);
+            String twoLines = processFile((BufferedReader reader) ->
+                 reader.readLine() + reader.readLine());
+
             System.out.println("Line 1 "+oneLine + " Two lines after that "+twoLines);
         } catch (IOException e) {
             e.printStackTrace();
