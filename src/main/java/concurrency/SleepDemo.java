@@ -15,7 +15,7 @@ public class SleepDemo implements Runnable {
             Thread.sleep(1000);
         }
 
-        System.out.println("Reached !");
+        System.out.println("Reached !"+SleepDemo.counter);
 
     }
 
