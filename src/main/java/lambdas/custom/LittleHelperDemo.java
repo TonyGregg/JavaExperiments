@@ -1,9 +1,4 @@
 package lambdas.custom;
-
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.List;
-
 /**
  * Created by Antony Genil on 1/19/20 at 13 46 for JavaExperiments
  **/
@@ -14,9 +9,7 @@ public class LittleHelperDemo {
         String mailOut = demo.doAnything(errands -> errands.checkMailPosts());
         System.out.println(mailOut);
 
-        String groceryItems = demo.doAnything(errands -> {
-             return errands.buyGroceries("Patels");
-        });
+        String groceryItems = demo.doAnything(errands -> errands.buyGroceries("Patels"));
         System.out.printf("Brought groceries. Items "+groceryItems);
 
        String multipleActivities = demo.doAnything(errands -> {
