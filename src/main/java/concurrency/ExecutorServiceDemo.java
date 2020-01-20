@@ -12,7 +12,7 @@ import static java.lang.Thread.*;
 public class ExecutorServiceDemo {
     static int counter = 0;
     public static void main(String[] args) {
-//        demoSingleThreadExecExec();
+        demoSingleThreadExecExec();
         demoSingleThreadExectuorSub();
         useCallable(() -> {
             System.out.println("Something. .. something..");
@@ -56,19 +56,8 @@ public class ExecutorServiceDemo {
         try {
             System.out.println("Single thread executor demo begin..");
             executorService = Executors.newSingleThreadExecutor();
-            executorService.execute(() -> {
-                System.out.println("Printing Zoo inventory");
-            });
-            executorService.execute(()-> {
-                for (int i = 0; i < 10; i++) {
-                    System.out.println("Printing record "+i);
-                    try {
-                        sleep(20);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
+            executorService.execute(() -> System.out.println("Printing Zoo inventory"));
+            executorService.execute(ExecutorServiceDemo::srun);
             executorService.execute(() -> {
                 System.out.println("Finished Printing Zoo inventory");
             });
@@ -92,5 +81,16 @@ public class ExecutorServiceDemo {
         }
 
 
+    }
+
+    private static void srun() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Printing record " + i);
+            try {
+                sleep(20);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
