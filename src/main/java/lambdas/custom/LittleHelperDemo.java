@@ -14,7 +14,7 @@ public class LittleHelperDemo {
 
        String multipleActivities = demo.doAnything(errands -> {
            return errands.getBooksFromLibrary("Eola") +
-           errands.checkMailPosts();
+           errands.checkMailPosts() +" Do something on your own activity, for example: Watch TV";
         });
         System.out.println("\n\nMultiple things "+multipleActivities);
     }
