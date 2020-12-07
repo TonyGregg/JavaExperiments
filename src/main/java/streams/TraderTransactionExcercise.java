@@ -59,7 +59,8 @@ public class TraderTransactionExcercise {
         System.out.println(cambridgeTraders);
 
         // Q4) Any traders based in Milan
-        boolean isMilanBased = transactions.stream().anyMatch(transaction -> transaction.getTrader().getCity().equals("Milan"));
+        boolean isMilanBased = transactions.stream().
+                anyMatch(transaction -> transaction.getTrader().getCity().equals("Milan"));
 
 
 

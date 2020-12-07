@@ -13,12 +13,16 @@ class NutritionFacts {
         this.servings = builder.servings;
         this.sodium = builder.sodium;
         this.fat = builder.fat;
+        this.calcium = builder.calcium;
+        this.magnesium = builder.magnesium;
     }
 
     private final int serveSize;
     private final int servings;
     private int sodium;
     private int fat;
+    private short magnesium;
+    private Short calcium;
 
     static class Builder {
         private final int serveSize;
@@ -26,6 +30,9 @@ class NutritionFacts {
 
         private int sodium;
         private int fat;
+
+        private short magnesium;
+        private Short calcium;
 
         Builder(int serveSize, int servings) {
             this.serveSize = serveSize;
@@ -44,9 +51,22 @@ class NutritionFacts {
             this.sodium = sodium;
             return this;
         }
+
+        public Builder magnesium(short magnesium) {
+            this.magnesium = magnesium;
+            return this;
+        }
+
+        public Builder calcium(Short calcium) {
+            this.calcium = calcium;
+            return this;
+        }
     }
 
     public static void main(String[] args) {
-        NutritionFacts cocoCola = new NutritionFacts.Builder(20,10).fat(0).sodium(20).build();
+        NutritionFacts cocoCola = new Builder(20,10).fat(0).sodium(20).calcium((short) 10).build();
+
+        System.out.println("Magnesium :: "+cocoCola.magnesium);
+        System.out.println("Calcium :: "+cocoCola.calcium);
     }
 }
