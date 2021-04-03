@@ -64,7 +64,7 @@ public class ExecutorServiceDemo {
             System.out.println("The End !!");
         } finally {
             /**
-             * It is important that the submit method is called at the end. Because thread scheduler
+             * It is important that the shutdown method is called at the end. Because thread scheduler
              * will schedule a non-daemon thread on the 1st task that is executed, so failing to call
              * shutdown() will result in your application never terminating.
              *

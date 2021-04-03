@@ -20,7 +20,7 @@ public class ConcurrentExcepDemo {
         while (stringIterator.hasNext()) {
 //            System.out.println(stringIterator.next ());
 //            strings.remove("s"); // concurrent modification exception
-            if (stringIterator.next().equals("s")) {
+            if (stringIterator.next().equals("c")) {
                 System.out.println("found s.. ");
                 stringIterator.remove(); //works fine
 

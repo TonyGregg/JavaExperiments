@@ -4,11 +4,12 @@ public class LittleHelperDemo {
   public static void main(String[] args) {
     LittleHelperDemo demo = new LittleHelperDemo();
 
-    String mailOut = demo.doAnything(errands -> errands.checkMailPosts());
+    String mailOut = demo.doAnything(littleHelper -> littleHelper.checkMailPosts());
     System.out.println(mailOut);
 
     String groceryItems = demo.doAnything(errands -> errands.buyGroceries("Patels"));
     System.out.printf("Brought groceries. Items " + groceryItems);
+    System.out.println(demo.doAnything(littleHelper -> littleHelper.getBooksFromLibrary("Naperville")));
 
     String multipleActivities =
         demo.doAnything(

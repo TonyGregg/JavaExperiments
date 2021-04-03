@@ -3,10 +3,11 @@ package streams;
 /**
  * Created by anton on 6/9/2018 10:19 AM
  **/
-public class Menu {
+public class Dish {
     private final String name;
     private final int calories;
     private final float price;
+    private final Type type;
 
     public String getName() {
         return name;
@@ -20,10 +21,15 @@ public class Menu {
         return price;
     }
 
-    public Menu(String name, int calories, float price) {
+    public Type getType() {
+        return type;
+    }
+
+    public Dish(String name, int calories, float price, Type type) {
         this.name = name;
         this.calories = calories;
         this.price = price;
+        this.type = type;
     }
 
     @Override
@@ -34,4 +40,8 @@ public class Menu {
                 ", price=" + price +
                 '}';
     }
+
+}
+enum Type {
+    VEGETARIAN, NON_VEG, SEA_FOOD;
 }
