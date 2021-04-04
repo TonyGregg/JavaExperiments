@@ -21,7 +21,7 @@ public class LittleHelperDemo {
     System.out.println("\n\nMultiple things " + multipleActivities);
   }
 
-  private String doAnything(LittleHelper helper) {
+  public String doAnything(LittleHelper helper) {
     System.out.println("\n--Inside do Anything method. --");
     Errands errands = new Errands();
     return helper.doThings(errands);

@@ -7,6 +7,7 @@ class NutritionFacts {
   private final int fat;
   private final short magnesium;
   private final Short calcium;
+
   private NutritionFacts(Builder builder) {
     this.serveSize = builder.serveSize;
     this.servings = builder.servings;
@@ -14,13 +15,6 @@ class NutritionFacts {
     this.fat = builder.fat;
     this.calcium = builder.calcium;
     this.magnesium = builder.magnesium;
-  }
-
-  public static void main(String[] args) {
-    NutritionFacts cocoCola = new Builder(20, 10).fat(0).sodium(20).calcium((short) 10).build();
-
-    System.out.println("Magnesium :: " + cocoCola.magnesium);
-    System.out.println("Calcium :: " + cocoCola.calcium);
   }
 
   static class Builder {
@@ -61,5 +55,12 @@ class NutritionFacts {
       this.calcium = calcium;
       return this;
     }
+  }
+
+  public static void main(String[] args) {
+    NutritionFacts cocoCola = new Builder(20, 10).fat(0).sodium(20).calcium((short) 10).build();
+
+    System.out.println("Magnesium :: " + cocoCola.magnesium);
+    System.out.println("Calcium :: " + cocoCola.calcium);
   }
 }
