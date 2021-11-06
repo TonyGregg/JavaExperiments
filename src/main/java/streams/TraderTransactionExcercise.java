@@ -18,7 +18,6 @@ public class TraderTransactionExcercise {
     Trader mario = new Trader("Mario", "Milan");
     Trader alan = new Trader("Alan", "Cambridge");
     Trader brian = new Trader("Brian", "Brooklyn");
-
     List<Transaction> transactions =
         Arrays.asList(
             new Transaction(brian, 2011, 300),
@@ -43,6 +42,8 @@ public class TraderTransactionExcercise {
         transactions.stream()
             .map(transaction -> transaction.getTrader().getCity())
             .collect(toSet());
+
+    final Set<Transaction> transactionSet = transactions.stream().distinct().collect(toSet());
 
     System.out.println("Unique cities where traders worked");
     System.out.println(uniqueCitiesOfTraders);
