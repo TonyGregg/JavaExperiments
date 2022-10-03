@@ -22,6 +22,15 @@ public class StreamDemo {
             .collect(Collectors.toList());
 
     lowCalorieDishes.forEach(System.out::println);
+
+
+    // reverse order
+    List<String> lowCalorieDishesReverseOrder =
+        dishes.parallelStream()
+            .filter(dish -> dish.getCalories() < 500)
+            .sorted(comparing(Dish::getCalories).reversed())
+            .map(Dish::getName)
+            .collect(Collectors.toList());
     // use of takewhile (java 9 feature)
     // If the menu is already ordered, stop once you found a dish that is greater than or equal to
     // 300 calories
