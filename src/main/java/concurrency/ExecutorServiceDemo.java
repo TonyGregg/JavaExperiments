@@ -41,6 +41,7 @@ public class ExecutorServiceDemo {
             });
             result.get(10, TimeUnit.SECONDS);
             System.out.println("Reached !");
+
         }  catch (TimeoutException | InterruptedException | ExecutionException e) {
             System.out.println("Not reached on time !");
         } finally {
@@ -58,6 +59,10 @@ public class ExecutorServiceDemo {
             executorService = Executors.newSingleThreadExecutor();
             executorService.execute(() -> System.out.println("Printing Zoo inventory"));
             executorService.execute(ExecutorServiceDemo::srun);
+
+            Future<?> result1 = executorService.submit(ExecutorServiceDemo::srun);
+            System.out.println(result1.isDone());
+
             executorService.execute(() -> {
                 System.out.println("Finished Printing Zoo inventory");
             });

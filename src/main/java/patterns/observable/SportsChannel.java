@@ -7,7 +7,7 @@ public class SportsChannel implements Channel{
 
   @Override
   public void update(String news) {
-    if (news.indexOf("tennis") != -1) {
+    if (news.indexOf("Tennis") != -1) {
       System.out.println("Worth the money sports news " + news);
     }
   }

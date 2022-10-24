@@ -11,18 +11,27 @@ import java.util.List;
  */
 public class NewsAgency {
   List<Channel> channelList = new ArrayList<>();
-  public Channel addChannel(Channel channel) {
-    return this.addChannel(channel);
+  public boolean addChannel(Channel channel) {
+    return channelList.add(channel);
   }
 
-  public Channel removeChannel(Channel channel) {
-    return this.removeChannel(channel);
+  public boolean removeChannel(Channel channel) {
+    return channelList.remove(channel);
   }
 
   public void processNews(String news) {
     for (Channel channel : channelList) {
       channel.update(news);
     }
+  }
+
+  public static void main(String[] args) {
+    NewsAgency newsAgency = new NewsAgency();
+    newsAgency.addChannel(new SportsChannel());
+    newsAgency.addChannel(new DramaChannel());
+    newsAgency.processNews("Tennis news: Roger federer retired");
+    newsAgency.processNews("Tennis news: Djokovic can't play at US open");
+    newsAgency.processNews("Gossip news: Boris Becker back to power again in UK?");
   }
 
 }

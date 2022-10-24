@@ -34,5 +34,11 @@ public class StringTrials {
       }
     }
     System.out.println("Final list " + stringBuffer);
+
+    Integer i1 = 1;
+    Integer i2 = 1;
+
+    System.out.println("Is i1 == i2 " + (i1==i2));
+    System.out.println("Is i1.compare(i2 ? " + (i1.compareTo(i2)));
   }
 }

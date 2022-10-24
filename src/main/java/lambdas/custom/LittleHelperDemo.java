@@ -16,7 +16,8 @@ public class LittleHelperDemo {
             errands -> {
               return errands.getBooksFromLibrary("Eola")
                   + errands.checkMailPosts()
-                  + " Do something on your own activity, for example: Watch TV";
+                  + " Do something on your own activity, for example: Watch TV,\n "
+                  + errands.getBooksFromLibrary("SJPL");
             });
     System.out.println("\n\nMultiple things " + multipleActivities);
   }
