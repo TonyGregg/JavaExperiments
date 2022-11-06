@@ -5,7 +5,9 @@ import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -27,12 +29,24 @@ public class TraderTransactionExcercise {
             new Transaction(mario, 2012, 700),
             new Transaction(alan, 2012, 950));
 
-    // Q1) Find all transactions in 2011 and sort by value (small to high)
+    // Q1) Find all transactions in 2011 and sort by value (low to high)
     List<Transaction> trxs2011Sorted =
         transactions.stream()
             .filter(transaction -> transaction.getYear() == 2011)
             .sorted(comparing(Transaction::getValue))
             .collect(toList());
+
+    // do it one more time
+    final List<Transaction> transactionList = transactions.stream()
+        .filter(transaction -> transaction.getYear() == 2011)
+        .sorted(comparing(Transaction::getValue))
+        .collect(toList());
+    // what if you have to sort in high to low order??
+
+    final List<Transaction> reverseSortedCollection = transactions.stream()
+        .filter(transaction -> transaction.getYear() == 2011)
+        .sorted(comparing(Transaction::getValue).reversed())
+        .collect(toList());
     System.out.println("2011 transactions sorted from small to high : ");
 
     System.out.println(trxs2011Sorted);
@@ -59,6 +73,16 @@ public class TraderTransactionExcercise {
             .collect(toList());
 
     System.out.println(cambridgeTraders);
+
+    //Q3.1 Return a Map<String, List<Trader>> city as the key and list of trader belongs to that city
+    final Map<String, List<Trader>> cityTraderListMap = transactions.stream()
+        .map(transaction -> transaction.getTrader())
+        .distinct()
+        .collect(Collectors.groupingBy(Trader::getCity));
+
+    cityTraderListMap.entrySet().stream().forEach(element -> {
+      System.out.println("City " + element.getKey() + " # of traders " + cityTraderListMap.get(element.getKey()).size());
+    });
     // Q4) Return a string of all traders' names alphabetically.
 
     final String allTradersName =

@@ -55,7 +55,13 @@ public class StreamDemo {
     Optional<Dish> mostCaloricDish = dishes.stream().collect(Collectors.maxBy(calorieComparator));
 
     System.out.println("Most Caloric Dish in the world : " + mostCaloricDish.get());
+    // max caloric dish using reducing
+    final Optional<Dish> optionalDish = dishes.stream()
+        .collect(Collectors.reducing((d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2));
 
+    if (optionalDish.isPresent()) {
+      System.out.println("The most caloric dish " + optionalDish.get());
+    }
     // Group by Dish
     final Map<Type, List<Dish>> typeListMap = dishes.stream()
         .collect(Collectors.groupingBy(Dish::getType));
