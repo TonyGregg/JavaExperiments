@@ -59,13 +59,18 @@ public class StreamDemo {
     final Optional<Dish> optionalDish = dishes.stream()
         .collect(Collectors.reducing((d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2));
 
-    if (optionalDish.isPresent()) {
-      System.out.println("The most caloric dish " + optionalDish.get());
-    }
+    optionalDish.ifPresent(dish -> System.out.println("The most caloric dish " + dish));
     // Group by Dish
     final Map<Type, List<Dish>> typeListMap = dishes.stream()
         .collect(Collectors.groupingBy(Dish::getType));
     System.out.println("By Type " + typeListMap);
+
+    // Short-circuiting example
+    // findFirst()
+    final Optional<Dish> firstDish = dishes.stream().filter(dish -> dish.getCalories() > 300)
+        .findFirst();
+    firstDish.ifPresent(dish -> System.out.println("First dish with more than 300 calorie " + dish));
+
   }
 
   private static ArrayList<Dish> getMenus() {
@@ -75,8 +80,6 @@ public class StreamDemo {
     dishes.add(dish);
     dish = new Dish("Dhal Makhini", 250, 12.0f, Type.VEGETARIAN);
     dishes.add(dish);
-    dish = new Dish("Kothu Parotta", 1300, 6.0f, Type.NON_VEG);
-    dishes.add(dish);
 
     dish = new Dish("Mutton Curry", 450, 15.0f, Type.NON_VEG);
     dishes.add(dish);
@@ -85,6 +88,8 @@ public class StreamDemo {
     dishes.add(dish);
 
     dish = new Dish("Mutton Chuka", 550, 12.0f, Type.NON_VEG);
+    dishes.add(dish);
+    dish = new Dish("Kothu Parotta", 1300, 6.0f, Type.NON_VEG);
     dishes.add(dish);
 
     dish = new Dish("Fish curry", 250, 14.0f, Type.SEA_FOOD);
