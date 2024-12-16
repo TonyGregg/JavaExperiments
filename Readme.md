@@ -1,1 +1,1 @@
-# Java features 8 - 17 experiments
+# Java features 17+ experiments
